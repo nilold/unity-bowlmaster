@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
     private Rigidbody ballBody;
     private AudioSource audioSource;
 
-    private Lane lane;
+    private Floor floor;
     private bool launched = false;
 
     [SerializeField] Vector3 launchVelocity;
@@ -21,7 +21,7 @@ public class Ball : MonoBehaviour
         ballBody = GetComponent<Rigidbody>();
         ballBody.useGravity = false;
         audioSource = GetComponent<AudioSource>();
-        lane = FindObjectOfType<Lane>();
+        floor = FindObjectOfType<Floor>();
 
         //Launch(launchVelocity);
     }
@@ -42,7 +42,7 @@ public class Ball : MonoBehaviour
 
     private float ClampX(float newX)
     {
-        float laneBound = lane.GetComponent<Renderer>().bounds.size.x / 2;
+        float laneBound = floor.GetComponent<Renderer>().bounds.size.x / 2;
 
         if (newX > laneBound) newX = laneBound;
         if (newX < -laneBound) newX = -laneBound;
