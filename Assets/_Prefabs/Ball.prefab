@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54432600664122432}
   - component: {fileID: 114196061820983682}
   - component: {fileID: 82214079761207474}
+  - component: {fileID: 114077973497446106}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -112,7 +113,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f597aa9e7eda94eb8a66503a699f83a0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -197,6 +198,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114077973497446106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1792837198612250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786a0bc39e4a94f9081a70c2a45bec23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114196061820983682
 MonoBehaviour:
   m_ObjectHideFlags: 1
