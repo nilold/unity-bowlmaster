@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Pin : MonoBehaviour {
 
     public float standingThreshold = 3f;
-
-	// Use this for initialization
-	void Start () {
+    [SerializeField] float distanceToRaise = 40f;
+    
+    // Use this for initialization
+    void Start () {
 
 	}
 	
@@ -16,9 +18,24 @@ public class Pin : MonoBehaviour {
 		
 	}
 
+    public void Raise(){
+        Vector3 pinPos = transform.position;
+        float newY = pinPos.y + distanceToRaise;
+        transform.position = new Vector3(pinPos.x, newY, pinPos.z);
+        GetComponent<Rigidbody>().useGravity = false;
+    }
+
     public bool IsStanding(){
         float zAngle = Mathf.Abs(transform.eulerAngles.z);
         float xAngle = Mathf.Abs(270 - transform.eulerAngles.x);
         return zAngle < standingThreshold && xAngle < standingThreshold;
+    }
+
+    public void Lower()
+    {
+        Vector3 pinPos = transform.position;
+        float newY = pinPos.y - distanceToRaise;
+        transform.position = new Vector3(pinPos.x, newY, pinPos.z);
+        GetComponent<Rigidbody>().useGravity = true;
     }
 }

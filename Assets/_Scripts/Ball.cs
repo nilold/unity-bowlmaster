@@ -13,12 +13,10 @@ public class Ball : MonoBehaviour
     public bool launched = false;
     private Vector3 originalPostion;
 
-    //private float corridorPosition;
-
     [SerializeField] Vector3 launchVelocity;
 
 
-    // Use this for initialization
+
     void Start()
     {
         ballBody = GetComponent<Rigidbody>();
@@ -26,15 +24,12 @@ public class Ball : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         floor = FindObjectOfType<Floor>();
         originalPostion = transform.position;
-        //CalculateCorridorPosition();
     }
 
-    //private void CalculateCorridorPosition()
-    //{
-    //    float laneBound = floor.GetComponent<Renderer>().bounds.size.x / 2;
-    //    float ballWidth = gameObject.GetComponent<Renderer>().bounds.size.x;
-    //    corridorPosition = laneBound + ballWidth / 2;
-    //}
+    void Update()
+    {
+
+    }
 
     public void MoveStart(float xNudge)
     {
@@ -76,12 +71,6 @@ public class Ball : MonoBehaviour
         ballBody.useGravity = true;
         ballBody.velocity = velocity;
         audioSource.Play();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
 }

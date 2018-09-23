@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,40 +14,65 @@ public class PinSetter : MonoBehaviour
     public float settleTime = 3f;
     public int lastStandingCount = -1;
     [SerializeField] Text pinsCountText;
+    [SerializeField] GameObject pinsSet;
 
-    // Use this for initialization
     void Start()
     {
         pins = FindObjectsOfType<Pin>();
         ball = FindObjectOfType<Ball>();
-        //print(ball);
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (ballEnteredBox){
+        if (ballEnteredBox)
+        {
             int standinPinsCount = CountStandingPins();
             pinsCountText.text = standinPinsCount.ToString();
-            CheckLastStandingCount(standinPinsCount);
+            UpdateStandingPins(standinPinsCount);
         }
-           
+
     }
 
-    private void CheckLastStandingCount(int standinPinsCount)
+    public void RaisePins()
     {
-        if(standinPinsCount != lastStandingCount){
+        foreach (Pin pin in FindObjectsOfType<Pin>())
+        {
+            if (pin.IsStanding())
+                pin.Raise();
+        }
+    }
+
+    public void LowerPins()
+    {
+        foreach (Pin pin in FindObjectsOfType<Pin>())
+        {
+            if (pin.IsStanding())
+                pin.Lower();
+        }
+    }
+
+    public void RenewPins()
+    {
+
+        Instantiate(pinsSet, new Vector3(0, 20, 1908), Quaternion.identity);
+
+    }
+
+
+    private void UpdateStandingPins(int standinPinsCount)
+    {
+        if (standinPinsCount != lastStandingCount)
+        {
             lastStandingCount = standinPinsCount;
             lastChangeTime = Time.time;
-        } else{
+        }
+        else
+        {
             if (Time.time > lastChangeTime + settleTime)
             {
                 PinsHaveSettled();
             }
         }
-
-
     }
 
     private void PinsHaveSettled()
@@ -82,11 +108,4 @@ public class PinSetter : MonoBehaviour
         pinsCountText.color = Color.red;
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<Pin>())
-        {
-            Destroy(other);
-        }
-    }
 }

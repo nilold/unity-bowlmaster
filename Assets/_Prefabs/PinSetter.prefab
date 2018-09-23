@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 23613030055391328}
   - component: {fileID: 65171554151480386}
   - component: {fileID: 114979966123775490}
+  - component: {fileID: 95846695137032306}
   m_Layer: 0
   m_Name: PinSetter
   m_TagString: Untagged
@@ -69,8 +70,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821983405108504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 50, z: 1895.4}
-  m_LocalScale: {x: 120, y: 100, z: 210}
+  m_LocalPosition: {x: 0, y: 50, z: 1895}
+  m_LocalScale: {x: 110, y: 100, z: 210}
   m_Children:
   - {fileID: 4077060185664410}
   m_Father: {fileID: 0}
@@ -199,6 +200,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95846695137032306
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821983405108504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 002a76be3a0a44546827b5b53217bbfb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114979966123775490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,3 +232,4 @@ MonoBehaviour:
   settleTime: 3
   lastStandingCount: -1
   pinsCountText: {fileID: 0}
+  pinsSet: {fileID: 1111029369906368, guid: 488a4244cf32546d0bbeca18a2485f31, type: 2}
