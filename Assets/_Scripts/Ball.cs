@@ -10,7 +10,10 @@ public class Ball : MonoBehaviour
     private AudioSource audioSource;
 
     private Floor floor;
-    private bool launched = false;
+    public bool launched = false;
+    private Vector3 originalPostion;
+
+    //private float corridorPosition;
 
     [SerializeField] Vector3 launchVelocity;
 
@@ -22,9 +25,16 @@ public class Ball : MonoBehaviour
         ballBody.useGravity = false;
         audioSource = GetComponent<AudioSource>();
         floor = FindObjectOfType<Floor>();
-
-        //Launch(launchVelocity);
+        originalPostion = transform.position;
+        //CalculateCorridorPosition();
     }
+
+    //private void CalculateCorridorPosition()
+    //{
+    //    float laneBound = floor.GetComponent<Renderer>().bounds.size.x / 2;
+    //    float ballWidth = gameObject.GetComponent<Renderer>().bounds.size.x;
+    //    corridorPosition = laneBound + ballWidth / 2;
+    //}
 
     public void MoveStart(float xNudge)
     {
@@ -50,6 +60,16 @@ public class Ball : MonoBehaviour
         return newX;
     }
 
+    public void Reset()
+    {
+        print("Reseting ball");
+        launched = false;
+        gameObject.transform.position = originalPostion;
+        ballBody.velocity = Vector3.zero;
+        ballBody.angularVelocity = Vector3.zero;
+
+    }
+
     public void Launch(Vector3 velocity)
     {
         launched = true;
@@ -63,4 +83,5 @@ public class Ball : MonoBehaviour
     {
 
     }
+
 }

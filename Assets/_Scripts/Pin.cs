@@ -17,9 +17,8 @@ public class Pin : MonoBehaviour {
 	}
 
     public bool IsStanding(){
-        return (transform.up.y > 1 - standingThreshold/1000);
-        //float zAngle = Mathf.Abs(transform.eulerAngles.z);
-        //float xAngle = Mathf.Abs(transform.eulerAngles.x);
-        //return zAngle < standingThreshold && xAngle < standingThreshold;
+        float zAngle = Mathf.Abs(transform.eulerAngles.z);
+        float xAngle = Mathf.Abs(270 - transform.eulerAngles.x);
+        return zAngle < standingThreshold && xAngle < standingThreshold;
     }
 }
