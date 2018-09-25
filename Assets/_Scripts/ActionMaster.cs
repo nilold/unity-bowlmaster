@@ -21,6 +21,7 @@ public class ActionMaster
 
         bowls[bowl - 1] = pins;
 
+        //Last bowl always ends game
         if (bowl == 21)
         {
             bowl = 1;
@@ -62,20 +63,22 @@ public class ActionMaster
             }
         }
 
+
+        if (bowl % 2 == 0) //2nd bowl of frame, always ends turn
+        {
+            bowl++;
+            return Action.EndTurn;
+        }
+
+        //Strike
         if (pins == 10)
         {
             bowl += 2;
             return Action.EndTurn;
         }
 
-        if (bowl % 2 != 0)
-        { //Middle of frame (or last frame)
-            bowl++;
-            return Action.Tidy;
-        }
-
         bowl++;
-        return Action.EndTurn;
+        return Action.Tidy;
 
     }
 

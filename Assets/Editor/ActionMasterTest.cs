@@ -84,7 +84,8 @@ public class ActionMasterTest
     }
 
     [Test]
-    public void T08SpareOnLastFrameAwarded(){
+    public void T08SpareOnLastFrameAwarded()
+    {
         for (int i = 0; i < 18; i++)
         {
             actionMaster.Bowl(2);
@@ -104,7 +105,8 @@ public class ActionMasterTest
     }
 
     [Test]
-    public void T10StrikeOn19thBowlAndNoStrikeOn20thReturnTidy(){
+    public void T10StrikeOn19thBowlAndNoStrikeOn20thReturnTidy()
+    {
         for (int i = 0; i < 18; i++)
         {
             actionMaster.Bowl(2);
@@ -122,5 +124,37 @@ public class ActionMasterTest
         }
         Assert.AreEqual(reset, actionMaster.Bowl(10));
         Assert.AreEqual(tidy, actionMaster.Bowl(0));
+    }
+
+    [Test]
+    public void T12ZeroAndTenShouldAdvance1Bowl()
+    {
+        Assert.AreEqual(tidy, actionMaster.Bowl(0));
+        Assert.AreEqual(endTurn, actionMaster.Bowl(10));
+        Assert.AreEqual(tidy, actionMaster.Bowl(5));
+    }
+
+    [Test]
+    public void T13BensTestForSingleAdvance()
+    {
+        int[] rolls = { 0, 10, 5 };
+        foreach (int roll in rolls)
+        {
+            actionMaster.Bowl(roll);
+        }
+        Assert.AreEqual(endTurn, actionMaster.Bowl(1));
+    }
+
+    [Test]
+    public void T1410thFrameTurkey()
+    {
+        int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+        foreach (int roll in rolls)
+        {
+            actionMaster.Bowl(roll);
+        }
+        Assert.AreEqual(reset, actionMaster.Bowl(10));
+        Assert.AreEqual(reset, actionMaster.Bowl(10));
+        Assert.AreEqual(endGame, actionMaster.Bowl(10));
     }
 }
