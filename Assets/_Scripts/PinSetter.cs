@@ -10,25 +10,33 @@ public class PinSetter : MonoBehaviour
     private Ball ball;
     private bool ballEnteredBox = false;
     private float lastChangeTime;
+    private int fallenPins = 0;
 
     public float settleTime = 3f;
     public int lastStandingCount = -1;
     [SerializeField] Text pinsCountText;
     [SerializeField] GameObject pinsSet;
 
+    ActionMaster actionMaster = new ActionMaster();
+    private ActionMaster.Action endTurn = ActionMaster.Action.EndTurn;
+    private ActionMaster.Action endGame = ActionMaster.Action.EndGame;
+    private ActionMaster.Action tidy = ActionMaster.Action.Tidy;
+    private ActionMaster.Action reset = ActionMaster.Action.Reset;
+
+    Animator animator;
+
     void Start()
     {
         pins = FindObjectsOfType<Pin>();
         ball = FindObjectOfType<Ball>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         if (ballEnteredBox)
         {
-            int standinPinsCount = CountStandingPins();
-            pinsCountText.text = standinPinsCount.ToString();
-            UpdateStandingPins(standinPinsCount);
+            UpdateStandingPins();
         }
 
     }
@@ -46,21 +54,27 @@ public class PinSetter : MonoBehaviour
     {
         foreach (Pin pin in FindObjectsOfType<Pin>())
         {
-            if (pin.IsStanding())
+            //if (pin.IsStanding())
                 pin.Lower();
         }
+        int standinPinsCount = CountStandingPins();
+        pinsCountText.text = standinPinsCount.ToString();
     }
 
     public void RenewPins()
     {
-
-        Instantiate(pinsSet, new Vector3(0, 20, 1908), Quaternion.identity);
+        fallenPins = 0;
+        pinsCountText.text = "10";
+        Instantiate(pinsSet, new Vector3(0, 40, 1908), Quaternion.identity);
 
     }
 
 
-    private void UpdateStandingPins(int standinPinsCount)
+    private void UpdateStandingPins()
     {
+        int standinPinsCount = CountStandingPins();
+        pinsCountText.text = standinPinsCount.ToString();
+
         if (standinPinsCount != lastStandingCount)
         {
             lastStandingCount = standinPinsCount;
@@ -77,6 +91,19 @@ public class PinSetter : MonoBehaviour
 
     private void PinsHaveSettled()
     {
+        fallenPins = 10 - lastStandingCount - fallenPins;
+
+        ActionMaster.Action action =  actionMaster.Bowl(fallenPins);
+        if(action == tidy){
+            Debug.Log("tidyTrigger");
+            animator.SetTrigger("tidyTrigger");
+        } else{
+            Debug.Log("resetTrigger");
+            animator.SetTrigger("resetTrigger");
+        }
+
+        Debug.Log("fallen pins: " + fallenPins.ToString());
+
         pinsCountText.color = Color.green;
         ballEnteredBox = false;
         lastStandingCount = -1;

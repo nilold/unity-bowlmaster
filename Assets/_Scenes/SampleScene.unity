@@ -1024,7 +1024,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4944303391754280, guid: 488a4244cf32546d0bbeca18a2485f31, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4944303391754280, guid: 488a4244cf32546d0bbeca18a2485f31, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1049,6 +1049,156 @@ Prefab:
     - target: {fileID: 4944303391754280, guid: 488a4244cf32546d0bbeca18a2485f31, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114702270263653566, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114194647808457332, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012399792983918, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114407844085883082, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114745208573061140, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114474474859826356, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441552003183034, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114025681782104964, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114118953088727224, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350932924149172, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: distanceToRaise
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 64530003149775302, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64094383121163992, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64972460265893800, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64382999029575636, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64520140818757498, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64489564814297334, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64223712387076408, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64173607157963636, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64900611114336766, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64685893699190590, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114702270263653566, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114194647808457332, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012399792983918, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114407844085883082, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114745208573061140, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114474474859826356, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441552003183034, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114025681782104964, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114118953088727224, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350932924149172, guid: 488a4244cf32546d0bbeca18a2485f31,
+        type: 2}
+      propertyPath: standingThreshold
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488a4244cf32546d0bbeca18a2485f31, type: 2}

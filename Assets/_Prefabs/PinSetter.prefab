@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 65171554151480386}
   - component: {fileID: 114979966123775490}
   - component: {fileID: 95846695137032306}
+  - component: {fileID: 114048549860917434}
   m_Layer: 0
   m_Name: PinSetter
   m_TagString: Untagged
@@ -218,6 +219,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114048549860917434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821983405108504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba9560b5994d49479d3f196162ba948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114979966123775490
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,6 +26,7 @@ public class Pin : MonoBehaviour {
     }
 
     public bool IsStanding(){
+        //TODO: it works only when pins area completely still
         float zAngle = Mathf.Abs(transform.eulerAngles.z);
         float xAngle = Mathf.Abs(270 - transform.eulerAngles.x);
         return zAngle < standingThreshold && xAngle < standingThreshold;
