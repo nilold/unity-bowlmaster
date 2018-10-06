@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent (typeof(Ball))]
-public class DragLaunch : MonoBehaviour {
+[RequireComponent(typeof(Ball))]
+public class DragLaunch : MonoBehaviour
+{
 
     private Ball ball;
     private Vector3 startPos, endPos;
     private float startTime, endTime;
 
 
-	void Start () {
+    void Start()
+    {
         ball = GetComponent<Ball>();
-	}
-	
-    public void OnDragStart(){
+    }
+
+    public void OnDragStart()
+    {
         startPos = Input.mousePosition;
         startTime = Time.time;
     }
@@ -23,7 +26,8 @@ public class DragLaunch : MonoBehaviour {
     public void OnDragEnd()
     {
         Vector3 launchVelocity = GetLaunchVelocity();
-        ball.Launch(launchVelocity);
+        if (!ball.launched)
+            ball.Launch(launchVelocity);
     }
 
     private Vector3 GetLaunchVelocity()

@@ -11,6 +11,23 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1250278104620476}
   m_IsPrefabAsset: 1
+--- !u!1 &1087047727644338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4716134805971906}
+  - component: {fileID: 65658297594383084}
+  - component: {fileID: 114037001232745574}
+  m_Layer: 0
+  m_Name: Ball Gutter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1250278104620476
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,6 +90,19 @@ Transform:
   m_Father: {fileID: 4741712746452652}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4716134805971906
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087047727644338}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 50, z: 900}
+  m_LocalScale: {x: 110, y: 100, z: 1800}
+  m_Children: []
+  m_Father: {fileID: 4741712746452652}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4741712746452652
 Transform:
   m_ObjectHideFlags: 1
@@ -85,6 +115,7 @@ Transform:
   m_Children:
   - {fileID: 4949574173106402}
   - {fileID: 4064064237236440}
+  - {fileID: 4716134805971906}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,6 +186,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.4, y: 4, z: 1}
   m_Center: {x: 0, y: -1.5, z: 0}
+--- !u!65 &65658297594383084
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087047727644338}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114037001232745574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087047727644338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2dd9987439b42c6b827373887473f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114764620548498266
 MonoBehaviour:
   m_ObjectHideFlags: 1

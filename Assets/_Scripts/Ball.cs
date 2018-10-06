@@ -26,10 +26,6 @@ public class Ball : MonoBehaviour
         originalPostion = transform.position;
     }
 
-    void Update()
-    {
-
-    }
 
     public void MoveStart(float xNudge)
     {
@@ -60,6 +56,7 @@ public class Ball : MonoBehaviour
         print("Reseting ball");
         launched = false;
         gameObject.transform.position = originalPostion;
+        gameObject.transform.rotation = Quaternion.identity;
         ballBody.velocity = Vector3.zero;
         ballBody.angularVelocity = Vector3.zero;
 
