@@ -8,20 +8,16 @@ public class PinSetter : MonoBehaviour
 
     private Pin[] pins;
     private Ball ball;
-    private bool ballEnteredBox = false;
+    private bool ballLefTheBox = false;
     private float lastChangeTime;
     private int fallenPins = 0;
 
     public float settleTime = 3f;
-    public int lastStandingCount = -1;
+    private int lastStandingCount = -1;
     [SerializeField] Text pinsCountText;
     [SerializeField] GameObject pinsSet;
 
     ActionMaster actionMaster = new ActionMaster();
-    private ActionMaster.Action endTurn = ActionMaster.Action.EndTurn;
-    private ActionMaster.Action endGame = ActionMaster.Action.EndGame;
-    private ActionMaster.Action tidy = ActionMaster.Action.Tidy;
-    private ActionMaster.Action reset = ActionMaster.Action.Reset;
 
     Animator animator;
 
@@ -34,7 +30,7 @@ public class PinSetter : MonoBehaviour
 
     void Update()
     {
-        if (ballEnteredBox)
+        if (ballLefTheBox)
         {
             UpdateStandingPins();
         }
@@ -55,7 +51,7 @@ public class PinSetter : MonoBehaviour
         foreach (Pin pin in FindObjectsOfType<Pin>())
         {
             //if (pin.IsStanding())
-                pin.Lower();
+            pin.Lower();
         }
         int standinPinsCount = CountStandingPins();
         pinsCountText.text = standinPinsCount.ToString();
@@ -92,20 +88,25 @@ public class PinSetter : MonoBehaviour
     private void PinsHaveSettled()
     {
         fallenPins = 10 - lastStandingCount - fallenPins;
+        ActionMaster.Action action = actionMaster.Bowl(fallenPins);
 
-        ActionMaster.Action action =  actionMaster.Bowl(fallenPins);
-        if(action == tidy){
-            Debug.Log("tidyTrigger");
+        Debug.Log("fallen pins: " + fallenPins.ToString() + " Action: " + action);
+
+        if (action == ActionMaster.Action.Tidy)
+        {
             animator.SetTrigger("tidyTrigger");
-        } else{
-            Debug.Log("resetTrigger");
+        }
+        else if (action == ActionMaster.Action.EndTurn)
+        {
             animator.SetTrigger("resetTrigger");
         }
-
-        Debug.Log("fallen pins: " + fallenPins.ToString());
+        else if (action == ActionMaster.Action.EndGame)
+        {
+            throw new UnityException("Dont know how to handle endGame action");
+        }
 
         pinsCountText.color = Color.green;
-        ballEnteredBox = false;
+        ballLefTheBox = false;
         lastStandingCount = -1;
         ball.Reset();
     }
@@ -121,17 +122,17 @@ public class PinSetter : MonoBehaviour
         return standingPins;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Ball>())
-        {
-            HandleBallEntered();
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.GetComponent<Ball>())
+    //    {
+    //        BallLeftTheBox();
+    //    }
+    //}
 
-    private void HandleBallEntered()
+    public void BallLeftTheBox()
     {
-        ballEnteredBox = true;
+        ballLefTheBox = true;
         pinsCountText.color = Color.red;
     }
 
