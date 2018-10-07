@@ -23,7 +23,20 @@ public class ScoreMaster
     {
         List<int> frameList = new List<int>();
 
-        // your code here
+        int index = 1;
+        int frameScore = 0;
+        foreach(int roll in rolls){
+            if(index%2 == 1){ //first row of frame
+                if(roll == 10){
+                    //strike
+
+                } else{
+                    frameScore = roll;
+                }
+            } else{
+                //second roll of frame
+            }
+        }
 
         return frameList;
     }
