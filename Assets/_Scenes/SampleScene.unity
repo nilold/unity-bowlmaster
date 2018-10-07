@@ -1609,8 +1609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f35a018dabe499683145a4d4282f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settleTime: 3
-  pinsCountText: {fileID: 429787171}
 --- !u!4 &1630320922
 Transform:
   m_ObjectHideFlags: 0
@@ -1886,6 +1884,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114514181608775396, guid: eaf895eaf4b4d40f59e42a73b7cc226a,
+        type: 2}
+      propertyPath: pinsCountText
+      value: 
+      objectReference: {fileID: 429787171}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaf895eaf4b4d40f59e42a73b7cc226a, type: 2}
   m_IsPrefabAsset: 0

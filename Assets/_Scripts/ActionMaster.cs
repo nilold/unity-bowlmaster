@@ -23,7 +23,7 @@ public class ActionMaster
         return currentAction;
     }
 
-    public Action Bowl(int pins)
+    Action Bowl(int pins)
     {
         Debug.Log("bowl: " + bowl);
 
