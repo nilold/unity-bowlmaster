@@ -32,7 +32,6 @@ public class PinSetter : MonoBehaviour
             if (pin.IsStanding())
             {
                 pin.Raise();
-                pin.transform.rotation = Quaternion.Euler(270f, 0, 0);
             }
 
         }

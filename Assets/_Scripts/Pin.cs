@@ -23,6 +23,7 @@ public class Pin : MonoBehaviour {
         float newY = pinPos.y + distanceToRaise;
         transform.position = new Vector3(pinPos.x, newY, pinPos.z);
         GetComponent<Rigidbody>().useGravity = false;
+        transform.rotation = Quaternion.Euler(270f, 0, 0);
     }
 
     public bool IsStanding(){
