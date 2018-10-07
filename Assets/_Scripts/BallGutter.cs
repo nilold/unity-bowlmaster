@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class BallGutter : MonoBehaviour {
 
-    PinSetter pinSetter;
+    GameManager gameManager;
 
 	// Use this for initialization
 	void Start () {
-        pinSetter = FindObjectOfType<PinSetter>();
+        gameManager = FindObjectOfType<GameManager>();
 
-        if(!pinSetter){
-            Debug.LogError("Could not find pinSetter");
+        if(!gameManager)
+        {
+            Debug.LogError("Could not find gameManager");
         }
 	}
 
     private void OnTriggerExit(Collider other)
     {
         if(other.GetComponent<Ball>()){
-            pinSetter.BallLeftTheBox();
+            gameManager.BallLeftTheBox();
         }
     }
 }
