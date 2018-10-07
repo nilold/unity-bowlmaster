@@ -65,7 +65,7 @@ public class PinCounter : MonoBehaviour
     {
         fallenPins = 10 - lastStandingCount - fallenPins;
 
-        gameManager.PinsHaveSettled(fallenPins);
+        gameManager.Bowl(fallenPins);
 
         int standinPinsCount = CountStandingPins();
         pinsCountText.text = standinPinsCount.ToString();

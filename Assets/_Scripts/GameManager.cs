@@ -5,9 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     PinSetter pinSetter;
     PinCounter pinCounter;
-    ActionMaster actionMaster = new ActionMaster();
-
     Ball ball;
+    ActionMaster actionMaster = new ActionMaster();
+    List<int> bowls = new List<int>();
 
     void Start()
     {
@@ -17,24 +17,23 @@ public class GameManager : MonoBehaviour {
     }
 
     //called by PinCounter
-    public ActionMaster.Action PinsHaveSettled(int fallenPins)
+    public ActionMaster.Action Bowl(int fallenPins)
     {
-        ActionMaster.Action action = actionMaster.Bowl(fallenPins);
+        bowls.Add(fallenPins);
+        ActionMaster.Action action = ActionMaster.NextAction(bowls);
 
         Debug.Log("fallen pins: " + fallenPins.ToString() + " Action: " + action);
-
-        if (action == ActionMaster.Action.Tidy)
+        switch (action)
         {
-            pinSetter.TidyPins();
-        }
-        else if (action == ActionMaster.Action.EndTurn)
-        {
-            pinSetter.ResetPins();
-            pinCounter.ResetCount();
-        }
-        else if (action == ActionMaster.Action.EndGame)
-        {
-            throw new UnityException("Dont know how to handle endGame action");
+            case ActionMaster.Action.Tidy:
+                pinSetter.TidyPins();
+                break;
+            case ActionMaster.Action.EndTurn:
+                pinSetter.ResetPins();
+                pinCounter.ResetCount();
+                break;
+            case ActionMaster.Action.EndGame:
+                throw new UnityException("Dont know how to handle endGame action");
         }
 
         ball.Reset();
