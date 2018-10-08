@@ -16,6 +16,7 @@ public class ScoreMaster
             cumulativeScores.Add(cumulativeTotal);
         }
 
+
         return cumulativeScores;
     }
 
@@ -28,12 +29,14 @@ public class ScoreMaster
 
         bool isStriked = false;
         bool handleStrike = false;
+        int strikeCount = 0;
         bool isSpared = false;
         int strikeBonusCount = 0;
 
         int index = 0;
 
-        foreach(int roll in rolls){
+        foreach (int roll in rolls)
+        {
             //handle bonuses
             if (isStriked)
             {
@@ -45,7 +48,8 @@ public class ScoreMaster
                 }
             }
 
-            if (isSpared){
+            if (isSpared)
+            {
                 bonusScore += roll;
                 isSpared = false;
                 frameScore += bonusScore;
@@ -56,40 +60,70 @@ public class ScoreMaster
 
 
 
-            if(index%2 == 0){ //first row of frame
-                if(roll == 10){
+            if (index % 2 == 0)
+            { //first row of frame
+                if (roll == 10)
+                {
                     //strike
+                    strikeCount++;
                     isStriked = true;
-                    frameScore = roll;
-                    //index++;
-                    //frameList.Add(frameScore);
-                } else{
+                    frameScore += roll;
+                    index++;
+                }
+                else
+                {
                     frameScore += roll;
                 }
-            } else{
+            }
+            else
+            {
                 //second roll of frame
-                if(rolls[index - 1] + rolls[index] == 10){
+                if ((frameScore + roll) % 10 == 0 && frameScore > 0)
+                {
                     //spare
                     isSpared = true;
                     frameScore += roll;
-                }else{
+                }
+                else
+                {
                     //normal end of frame
                     frameScore += roll;
-                    if(!isStriked){
+                    if (!isStriked)
+                    {
                         frameList.Add(frameScore);
                         frameScore = 0;
                     }
                 }
             }
 
-            if(handleStrike){
+            if (handleStrike)
+            {
+                strikeCount--;
                 handleStrike = false;
-                isStriked = false;
                 frameList.Add(frameScore);
-                frameList.Add(bonusScore);
-                frameScore = 0;
-                bonusScore = 0;
-                strikeBonusCount = 0;
+                if (strikeCount == 0)
+                {
+                    isStriked = false;
+                    if (index < 21 && !isSpared)
+                        frameList.Add(bonusScore);
+
+                    if (!isSpared)
+                    {
+                        frameScore = 0;
+                        bonusScore = 0;
+                    }else{
+                        frameScore = bonusScore;
+                        bonusScore = 0;
+                    }
+                    strikeBonusCount = 0;
+
+                }
+                else
+                {
+                    frameScore = bonusScore;
+                    bonusScore = roll;
+                    strikeBonusCount = 1;
+                }
             }
 
             index++;
