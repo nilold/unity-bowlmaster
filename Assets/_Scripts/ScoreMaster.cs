@@ -26,7 +26,6 @@ public class ScoreMaster
 
         int frameScore = 0;
         int bonusScore = 0;
-
         bool isStriked = false;
         bool handleStrike = false;
         int strikeCount = 0;
@@ -116,7 +115,6 @@ public class ScoreMaster
                         bonusScore = 0;
                     }
                     strikeBonusCount = 0;
-
                 }
                 else
                 {
