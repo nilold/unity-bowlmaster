@@ -19,41 +19,29 @@ public class ScoreDisplay : MonoBehaviour
     public void FillRolls(List<int> rolls)
     {
         string output = FormatRolls(rolls);
-        for (int i = 0; i < output.Length; i++)
-        {
+        for (int i = 0; i < output.Length; i++){
             bowlScores[i].text = output[i].ToString();
         }
     }
 
-    public void FillFrames(List<int> frames)
-    {
-        for (int i = 0; i < frames.Count; i++)
-        {
+    public void FillFrames (List<int> frames){
+        for (int i = 0; i < frames.Count; i++){
             frameScores[i].text = frames[i].ToString();
         }
     }
 
-    public static string FormatRolls(List<int> rolls)
-    {
+    public static string FormatRolls (List<int> rolls){
         string output = "";
 
-        for (int i = 0; i < rolls.Count; i++)
-        {
-            if (rolls[i] == 0)
-            {
+        for (int i = 0; i < rolls.Count; i++){
+            if(rolls[i] == 0){
                 output += "-";
-            }
-            else if (rolls[i] == 10)
-            {
+            }else if(rolls[i] == 10){
                 output += "X";             // STRIKE
                 if (i < 18) { output += " "; }
-            }
-            else if ((i == 20 || i % 2 == 1) && rolls[i] + rolls[i - 1] == 10)
-            {
+            }else if((i == 20 || i % 2 == 1) && rolls[i] + rolls[i-1] == 10){
                 output += "/";              // SPARE
-            }
-            else
-            {
+            }else{
                 output += rolls[i].ToString();
             }
         }
