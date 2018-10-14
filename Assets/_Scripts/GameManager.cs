@@ -6,12 +6,15 @@ public class GameManager : MonoBehaviour
 {
     PinSetter pinSetter;
     PinCounter pinCounter;
+    ScoreDisplay scoreDisplay;
     Ball ball;
-    ActionMaster actionMaster = new ActionMaster();
+    //ActionMaster actionMaster = new ActionMaster();
+    //ScoreMaster scoreMaster = new ScoreMaster();
     List<int> bowls = new List<int>();
 
     void Start()
     {
+        scoreDisplay = FindObjectOfType<ScoreDisplay>();
         pinSetter = FindObjectOfType<PinSetter>();
         pinCounter = FindObjectOfType<PinCounter>();
         ball = FindObjectOfType<Ball>();
@@ -37,9 +40,15 @@ public class GameManager : MonoBehaviour
                 throw new UnityException("Dont know how to handle endGame action");
         }
 
+        DisplayScores();
         ball.Reset();
 
         return action;
     }
 
+    private void DisplayScores()
+    {
+        List<int> scores = ScoreMaster.ScoreCumulative(bowls);
+        scoreDisplay.FillRollCard(bowls, scores);
+    }
 }

@@ -3,27 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionMaster
+public static class ActionMaster
 {
 
     public enum Action { Tidy, Reset, EndTurn, EndGame };
 
-    private int[] bowls = new int[21];
-    private int bowl = 1;
-
-
     public static Action NextAction(List<int> pinFalls){
-        ActionMaster am = new ActionMaster();
-        Action currentAction = new Action();
+        //ActionMaster am = new ActionMaster();
+
+    int[] bowls = new int[21];
+    int bowl = 1;
+
+    Action currentAction = new Action();
 
         foreach(int pinFall in pinFalls){
-            currentAction = am.Bowl(pinFall);
+            currentAction = ActionMaster.Bowl(pinFall, ref bowls, ref bowl);
         }
 
         return currentAction;
     }
 
-    Action Bowl(int pins)
+    public static Action Bowl(int pins, ref int[] bowls, ref int bowl)
     {
         Debug.Log("bowl: " + bowl);
 
@@ -40,7 +40,7 @@ public class ActionMaster
             return Action.EndGame;
         }
 
-        if (bowl >= 20 && !Bowl21Awarded())
+        if (bowl >= 20 && !Bowl21Awarded(bowls))
         {
             bowl = 1;
             return Action.EndGame;
@@ -65,7 +65,7 @@ public class ActionMaster
             {
                 return Action.Reset;
             }
-            else if (Bowl21Awarded())
+            else if (Bowl21Awarded(bowls))
             {
                 return Action.Tidy;
             }
@@ -95,7 +95,7 @@ public class ActionMaster
     }
 
 
-    private bool Bowl21Awarded()
+    private static bool Bowl21Awarded(int[] bowls)
     {
         return (bowls[19 - 1] + bowls[20 - 1] >= 10);
     }
