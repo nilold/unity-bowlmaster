@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     private void DisplayScores()
     {
         List<int> scores = ScoreMaster.ScoreCumulative(bowls);
-        scoreDisplay.FillRollCard(bowls, scores);
+        scoreDisplay.FillFrames(scores);
+        scoreDisplay.FillRolls(bowls);
     }
 }

@@ -25,7 +25,7 @@ public static class ActionMaster
 
     public static Action Bowl(int pins, ref int[] bowls, ref int bowl)
     {
-        Debug.Log("bowl: " + bowl);
+        //Debug.Log("bowl: " + bowl);
 
         if (pins < 0 || pins > 10)
             throw new UnityException("Invalid number of pins: " + pins.ToString());
